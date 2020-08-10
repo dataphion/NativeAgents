@@ -1,4 +1,4 @@
-# Easel Qa Desktop Application
+# Easel QA Desktop Application
 
 1) npm install or yarn
 
