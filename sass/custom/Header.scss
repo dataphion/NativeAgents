@@ -1,0 +1,41 @@
+@import "../vars";
+
+.header-container {
+  display: flex;
+  height: 50px;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 30px;
+  background: #ffffff;
+  .header-left {
+    display: flex;
+    align-items: center;
+    .header-left-logo {
+      cursor: pointer;
+      height: 26px;
+      width: 94px;
+      background-image: url("../assets/logo.png");
+    }
+    .header-left-divider {
+      margin: 0 10px;
+      width: 2px;
+      height: 16px;
+      background: #dddddd;
+      border-radius: 2px;
+    }
+    .header-left-logo-title {
+      color: #333333;
+      font-size: 18px;
+      font-weight: $PRIMARY_REGULAR;
+      span {
+        font-weight: $PRIMARY_MEDIUM;
+      }
+    }
+  }
+  .header-right {
+    cursor: pointer;
+    color: #999999;
+    font-size: 14px;
+    font-weight: $PRIMARY_REGULAR;
+  }
+}

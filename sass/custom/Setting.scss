@@ -1,0 +1,59 @@
+@import "../vars";
+
+.profile-body-container {
+  padding: 30px;
+  height: calc(100vh - 50px);
+  overflow-y: auto;
+  .profile-row-container {
+    margin-bottom: 30px;
+    .profile-title-container {
+      font-family: $PRIMARY;
+      font-weight: $PRIMARY_BOLD;
+      font-size: 18px;
+      color: #ffffff;
+    }
+    .profile-sub-title-container {
+      font-weight: $SECONDARY_SEMI_BOLD;
+      font-size: 13px;
+      color: #ffffff80;
+    }
+    .profile-form-container {
+      padding: 20px 30px;
+      background: #ffffff;
+      border-radius: 10px;
+      box-shadow: 0 5px 30px #0000000d;
+      .button-container {
+        display: flex;
+        width: 100%;
+        align-items: center;
+        justify-content: flex-end;
+      }
+      .profile-button-container {
+        display: flex;
+      }
+      .profile-plan-info-container {
+        display: flex;
+        align-items: center;
+        font-weight: $SECONDARY_SEMI_BOLD;
+        font-size: 14px;
+        color: #333333;
+        .profile-active-plan {
+          padding: 10px 20px;
+          background: #e2e9ed;
+          border-radius: 10px;
+          margin-left: 15px;
+          font-weight: $SECONDARY_BOLD;
+          font-size: 13px;
+          color: #333333;
+          opacity: 0.5;
+        }
+      }
+    }
+  }
+}
+
+.profile-border-container {
+  border-bottom: 1px solid #e2e9ed;
+  width: 100%;
+  margin: 15px 0;
+}

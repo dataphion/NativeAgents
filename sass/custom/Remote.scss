@@ -1,0 +1,47 @@
+@import "../vars";
+
+.remote-container {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  cursor: move;
+  box-shadow: 0 5px 30px #00000050;
+  height: 400px;
+  z-index: 999999999999999999;
+  width: 200px;
+  border-radius: 10px;
+  background: #000000;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .remote-top-container {
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+  }
+  .remote-body-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    .remote-button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 55px;
+      height: 30px;
+      border-radius: 10px;
+      cursor: pointer;
+      background: rgba($color: #ffffff, $alpha: 0.5);
+    }
+    .remote-multi-button {
+      padding: 5px 0;
+      display: flex;
+      width: 100%;
+      justify-content: space-around;
+    }
+  }
+}

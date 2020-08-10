@@ -1,0 +1,65 @@
+var net = require('net');
+
+const wdio = require("webdriverio");
+
+const opts = {
+    "port": 4723,
+    "hostname": "127.0.0.1",
+    // "capabilities":{
+    //     "deviceName": "sdk_google_atv_x86",
+    //     "platformName": "Android",
+    //     "platformVersion": "7.0",
+    //     "noReset": true,
+    //     "udid": "emulator-5554",
+    //     "automationName": "Espresso",
+    //     "appPackage": "com.example.ourfiretvapp",
+    //     "app": "C:\\Users\\Admin\\Desktop\\fire-app-builder\\OurFireTvApp\\app\\build\\outputs\\apk\\debug\\app-debug.apk"
+    // }
+    "capabilities":{
+        platformName: "iOS",
+        deviceName: "iPhone 11 Pro Max",
+        platformVersion: "13.3",
+        automationName: "XCUITest",
+        app: "/Users/ravishankar/Library/Developer/Xcode/DerivedData/HelloWorld-gurfcygdbxrekxekurqrxsfbskks/Build/Products/Debug-iphonesimulator/HelloWorld.app"
+    }
+};
+
+
+var HOST = '127.0.0.1'; // parameterize the IP of the Listen
+var PORT = 6969; // TCP LISTEN port
+
+
+// Create an instance of the Server and waits for a conexão
+net.createServer(function(sock) {
+
+
+  // Receives a connection - a socket object is associated to the connection automatically
+  console.log('CONNECTED: ' + sock.remoteAddress +':'+ sock.remotePort);
+
+
+  // Add a 'data' - "event handler" in this socket instance
+  sock.on('data', async function(data) {
+	  // data was received in the socket 
+	  // Writes the received message back to the socket (echo)
+	  //sock.write("Ran some Appium commands");
+
+    let driver = await wdio.remote(opts);
+    console.log(driver);
+    let pageSource = await driver.getPageSource();
+    console.log(pageSource);
+    sock.write(pageSource);
+  });
+
+
+  // Add a 'close' - "event handler" in this socket instance
+  sock.on('close', function(data) {
+	  // closed connection
+	  console.log('CLOSED: ' + sock.remoteAddress +' '+ sock.remotePort);
+  });
+
+
+}).listen(PORT, HOST);
+
+
+console.log('Server listening on ' + HOST +':'+ PORT);
+

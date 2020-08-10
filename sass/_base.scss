@@ -1,0 +1,101 @@
+@import "./vars";
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  position: relative;
+  color: white;
+  height: 100vh;
+  background: #242a41;
+  font-family: $PRIMARY;
+  overflow-y: hidden;
+}
+
+a {
+  text-decoration: none;
+  color: unset;
+}
+
+// for textbox
+.textbox-container {
+  margin-bottom: 10px;
+  &:last-child {
+    margin-bottom: 0;
+  }
+  .textbox-title {
+    font-weight: $PRIMARY_MEDIUM;
+    font-size: 12px;
+    color: #777777;
+    margin-bottom: 5px;
+  }
+  input {
+    transition: $TRANSITION_SPEED;
+    font-weight: $PRIMARY_MEDIUM;
+    font-size: 12px;
+    color: #000000;
+    margin-bottom: 5px;
+    outline: none;
+    width: 100%;
+    height: 32px;
+    border-radius: 4px;
+    border: 1px solid #dddddd;
+    padding: 0 10px;
+  }
+}
+
+.layout-execution-successfull {
+  border: 1px solid #52c41a !important;
+}
+
+::-webkit-scrollbar {
+  height: 3px;
+  width: 3px;
+  background: #fff;
+  // background: #242a41;
+}
+::-webkit-scrollbar-thumb {
+  margin-left: 10px;
+  background: #ff9879;
+  border-radius: 10px;
+}
+
+// React-loader-spinner library css edit
+.loader-css {
+  position: fixed !important;
+  top: calc(50% - 50px) !important;
+  left: calc(50% - 50px) !important;
+  z-index: 9999999999999 !important;
+}
+
+.ant-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  .ant-empty-description {
+    color: #000000;
+    opacity: 0.5;
+  }
+}
+
+.ant-tabs-nav .ant-tabs-tab {
+  color: #ffffff !important;
+}
+
+.ant-table {
+  border-radius: 10px !important;
+  overflow: hidden !important;
+}
+
+th,
+td {
+  text-align: center !important;
+  &:first-child {
+    text-align: left !important;
+  }
+  &:last-child {
+    text-align: right !important;
+  }
+}

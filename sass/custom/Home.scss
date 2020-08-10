@@ -1,0 +1,154 @@
+@import "../vars";
+
+.home-body-container {
+  height: calc(100vh - 50px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  .title-container {
+    font-family: $SECONDARY;
+    font-size: 16px;
+    font-weight: $SECONDARY_BOLD;
+    margin: 50px 0;
+  }
+  .bottom-container {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    .left-part {
+      margin-right: 30px;
+      .record-card-container {
+        background: transparent linear-gradient(319deg, #1d6fa7 0%, #1d8291 100%) 0% 0% no-repeat padding-box;
+        border-radius: 10px;
+        overflow: hidden;
+        .record-card-top {
+          padding: 20px;
+          display: flex;
+          align-items: center;
+          .record-card-top-logo {
+            width: 40px;
+            height: 40px;
+            background-image: url("../assets/start-icon.svg");
+            margin-right: 10px;
+          }
+          .record-card-top-title {
+            font-family: $SECONDARY;
+            font-size: 22px;
+            font-weight: $SECONDARY_BOLD;
+          }
+        }
+        .record-card-bottom {
+          .button-container {
+            display: flex;
+            .button {
+              cursor: pointer;
+              width: 160px;
+              height: 40px;
+              border-radius: 5px 5px 0px 0px;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              font-weight: $PRIMARY_MEDIUM;
+              color: #ffffff;
+              font-size: 12px;
+              opacity: 0.5;
+              transition: $TRANSITION_SPEED;
+            }
+            .active {
+              background: #ffffff;
+              color: #555555;
+              opacity: 1;
+            }
+          }
+        }
+        .conditional-body-container {
+          padding: 20px;
+          background: #ffffff;
+          .advance-container {
+            display: flex;
+            width: 100%;
+            align-items: center;
+            justify-content: space-between;
+            color: #eb8926;
+            font-weight: $PRIMARY_MEDIUM;
+            font-size: 12px;
+            margin: 20px 0;
+            .text {
+              cursor: pointer;
+            }
+          }
+          .start-button-container {
+            cursor: pointer;
+            height: 40px;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: $PRIMARY_MEDIUM;
+            font-size: 13px;
+            background: transparent linear-gradient(82deg, #35d099 0%, #6bd035 100%) 0% 0% no-repeat padding-box;
+            .logo {
+              margin-left: 10px;
+              width: 12px;
+              height: 11px;
+              background-image: url("../assets/next-icon.svg");
+            }
+          }
+        }
+      }
+    }
+    .right-part {
+      display: flex;
+      flex-direction: column;
+      .card-container {
+        cursor: pointer;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        padding: 20px;
+        border-radius: 10px;
+        margin-bottom: 30px;
+        overflow: hidden;
+        height: 140px;
+        width: 200px;
+        &:last-child {
+          margin-bottom: 0;
+        }
+        .card-top-part {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          margin-bottom: 20px;
+          .card-top-logo {
+            width: 40px;
+            flex-shrink: 0;
+            height: 40px;
+          }
+          .card-top-title {
+            font-family: $SECONDARY;
+            font-size: 22px;
+            font-weight: $SECONDARY_BOLD;
+          }
+        }
+        .card-bottom-desc {
+          font-family: $SECONDARY;
+          font-size: 14px;
+          font-weight: $SECONDARY_REGULAR;
+          opacity: 0.5;
+        }
+      }
+    }
+    .testcase-card {
+      background: transparent linear-gradient(125deg, #8f4993 0%, #4c4693 100%) 0% 0% no-repeat padding-box;
+      .card-top-logo {
+        background-image: url("../assets/testcase-icon.svg");
+      }
+    }
+    .setting-card {
+      background: transparent linear-gradient(125deg, #3a4b5c 0%, #263450 100%) 0% 0% no-repeat padding-box;
+      .card-top-logo {
+        background-image: url("../assets/settings-icon.svg");
+      }
+    }
+  }
+}

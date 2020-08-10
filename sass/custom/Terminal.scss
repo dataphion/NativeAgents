@@ -1,0 +1,94 @@
+@import "../vars";
+
+.terminal-container {
+  .terminal-header-container {
+    height: 45px;
+    display: flex;
+    padding: 0 30px;
+    align-items: center;
+    justify-content: space-between;
+    background: #3a3f54;
+    .left-part {
+      display: flex;
+      align-items: center;
+      .header-button-bg {
+        cursor: pointer;
+        height: 35px;
+        width: 35px;
+        border-radius: 4px;
+        background: #4d5167;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 10px;
+        .stop-btn-logo {
+          width: 15px;
+          height: 15px;
+          border-radius: 5px;
+          background: #ef6060;
+        }
+      }
+      .status-container {
+        color: #35d099;
+        font-family: $SECONDARY;
+        font-size: 12px;
+        font-weight: $SECONDARY_BOLD;
+      }
+    }
+    .right-part {
+      display: flex;
+      align-items: center;
+      .header-button-bg {
+        cursor: pointer;
+        height: 35px;
+        width: 35px;
+        border-radius: 4px;
+        background: #4d5167;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 10px;
+        .target-btn-logo {
+          width: 18px;
+          height: 18px;
+          background-image: url("../assets/Mask\ Group\ 7.svg");
+        }
+        .download-btn-logo {
+          width: 14px;
+          height: 14px;
+          background-image: url("../assets/Mask\ Group\ 5.svg");
+        }
+      }
+      .header-search-bg {
+        border-radius: 4px;
+        background: #4d5167;
+        display: flex;
+        align-items: center;
+        width: 150px;
+        padding: 10px;
+        .search-btn-logo {
+          width: 16px;
+          flex-shrink: 0;
+          height: 16px;
+          background-image: url("../assets/Mask\ Group\ 6.svg");
+          margin-right: 10px;
+        }
+        input {
+          outline: none;
+          background: transparent;
+          border: none;
+          color: #ffffff;
+          font-family: $SECONDARY;
+          font-size: 12px;
+          font-weight: $SECONDARY_REGULAR;
+        }
+      }
+    }
+  }
+  .terminal-logs-container {
+    padding: 10px 30px;
+    overflow: auto;
+    font-family: "Fira Code", monospace;
+    font-size: 11px;
+  }
+}
