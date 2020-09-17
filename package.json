@@ -10,8 +10,9 @@
     "test": "gulp test",
     "release": "gulp release",
     "package-mac": "electron-packager . --overwrite --platform=darwin --arch=x64 --icon=assets/mac.icns --prune=true --out=release-builds",
-    "package-win": "electron-packager . electron-tutorial-app --overwrite --asar=true --platform=win32 --arch=ia32 --icon=assets/win.ico --prune=true --out=release-builds --version-string.CompanyName=CE --version-string.FileDescription=CE --version-string.ProductName=\"EaselQA\"",
-    "package-linux": "electron-packager . electron-tutorial-app --overwrite --asar=true --platform=linux --arch=x64 --icon=assets/linux.png --prune=true --out=release-builds"
+    "package-win": "electron-packager . EaselQA --overwrite --asar=true --platform=win32 --arch=ia32 --icon=assets/win.ico --prune=true --out=release-builds --version-string.CompanyName=CE --version-string.FileDescription=CE --version-string.ProductName=\"EaselQA\"",
+    "package-linux": "electron-packager . EaselQA --overwrite --asar=true --platform=linux --arch=x64 --icon=assets/linux.png --prune=true --out=release-builds",
+    "create-installer-mac": "electron-installer-dmg ./release-builds/EaselQA-darwin-x64/EaselQA.app EaselQA --out=release-builds --overwrite --icon=assets/mac.icns"
   },
   "author": "Dataphion",
   "devDependencies": {
@@ -23,6 +24,7 @@
     "electron": "^9.2.0",
     "electron-builder": "^20.39.0",
     "electron-connect": "^0.6.3",
+    "electron-installer-dmg": "^3.0.0",
     "electron-packager": "^15.1.0",
     "electron-react-devtools": "^0.5.3",
     "gulp": "^4.0.2",
