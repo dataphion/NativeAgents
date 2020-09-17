@@ -4,7 +4,7 @@
   "description": "EaselQA desktop app for mobile testcase recording.",
   "main": "build/main.js",
   "scripts": {
-    "postinstall": "install-app-deps",
+    "postinstall": "electron-builder install-app-deps",
     "build": "gulp build",
     "start": "gulp start",
     "test": "gulp test",
