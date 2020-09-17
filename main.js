@@ -17,6 +17,7 @@ import TVOSExecutor from "./TVOSExecutor";
 import AndroidExecutor from "./AndroidExecutor";
 import RokuTVExecutor from "./RokuTVExecutor";
 const wdio = require("webdriverio");
+console.log(constants.host);
 const socket = io.connect(constants.host);
 const options = {
   title: "EaselQA is Online",
@@ -73,6 +74,7 @@ const createWindow = async () => {
       deviceOS = "Linux";
     }
     setInterval(() => {
+      console.log("send to connected_desktop_agent");
       socket.emit("connected_desktop_agent", { os: deviceOS, ip: deviceIp, status: "Online" });
     }, 2000);
     launchApp();
