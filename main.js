@@ -1,3 +1,8 @@
+const setupEvents = require("./installers/setupEvents");
+if (setupEvents.handleSquirrelEvent()) {
+  // squirrel event handled and app will exit in 1000ms, so don't do anything else
+  return;
+}
 import { app, Notification, Menu } from "electron";
 import io from "socket.io-client";
 import axios from "axios";
