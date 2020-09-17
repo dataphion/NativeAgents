@@ -59,43 +59,28 @@ export default class AndroidExecutor {
     console.log("FOCUS is not required for Android...");
   }
   async goto(type, element_props, ribbon_name, tile_name) {
-    let element
+    let element;
     if (type == "RIBBON") {
       console.log("going to ribbon");
-        element =  await this.au.goingtoribbon(
-        this.driver,
-        element_props,
-        ribbon_name,
-        tile_name
-      );
+      element = await this.au.goingtoribbon(this.driver, element_props, ribbon_name, tile_name);
     }
     if (type == "TILE") {
       console.log("going to tile");
-      element = await this.au.goingtotile(
-        this.driver,
-        element_props,
-        ribbon_name,
-        tile_name
-      );
+      element = await this.au.goingtotile(this.driver, element_props, ribbon_name, tile_name);
     }
     console.log("Found Error");
     if (element.error) {
       await this.driver.pause(10000);
-      element = await this.goto(type,element_props,ribbon_name,tile_name);
-    } 
+      element = await this.goto(type, element_props, ribbon_name, tile_name);
+    }
   }
   async executeGroup(group_name) {
-    let actions = await GenericUtils.getTestStepsByGroupName(
-      group_name,
-      "Android"
-    );
+    let actions = await GenericUtils.getTestStepsByGroupName(group_name, "Android");
     console.log(actions);
     let count = 0;
     for (const tc of actions) {
       count++;
-      console.log(
-        `STEP ${count} & ACTION IS ${tc.objectrepository.action.toUpperCase()}`
-      );
+      console.log(`STEP ${count} & ACTION IS ${tc.objectrepository.action.toUpperCase()}`);
       // before execute step
       let element_props = tc.objectrepository.element_attributes;
       if (tc.objectrepository.action === "tap") {
@@ -106,11 +91,7 @@ export default class AndroidExecutor {
         console.log("Send key started");
         await this.sendKeys(element_props, tc.objectrepository.element_value);
         console.log("Sendkey is completed..");
-      } else if (
-        ["up", "left", "select", "right", "down", "back", "home"].includes(
-          tc.objectrepository.action
-        )
-      ) {
+      } else if (["up", "left", "select", "right", "down", "back", "home"].includes(tc.objectrepository.action)) {
         console.log("Remote action started");
         await this.remoteFunctions(tc.objectrepository.action);
         console.log("Remote action compelted");
@@ -126,19 +107,19 @@ export default class AndroidExecutor {
                           text,element_attributes}}}}`;
 
     const data = JSON.stringify({
-      query
+      query,
     });
     const headers = {
-      "Content-Type": "application/json"
+      "Content-Type": "application/json",
     };
 
     const testcase_req = await axios.post(constants.graphql, data, {
-      headers: headers
+      headers: headers,
     });
     // console.log(testcase_req);
     const testcase_json = await testcase_req.data;
     let tcc = testcase_json.data.testcases[0].testcasecomponents;
-    tcc = tcc.sort(function(a, b) {
+    tcc = tcc.sort(function (a, b) {
       var x = parseInt(a["sequence_number"], 10);
       var y = parseInt(b["sequence_number"], 10);
 
@@ -152,17 +133,13 @@ export default class AndroidExecutor {
         title: data.objectrepository.element_type,
         desc: data.objectrepository.element_label,
         button: data.objectrepository.action.toUpperCase(),
-        element_attributes: data.objectrepository.element_attributes
+        element_attributes: data.objectrepository.element_attributes,
       });
     }
 
     for (const tc of tcc) {
       if (tc.type === "mobile") {
-        console.log(
-          `STEP ${
-            tc.sequence_number
-          } & ACTION IS ${tc.objectrepository.action.toUpperCase()}`
-        );
+        console.log(`STEP ${tc.sequence_number} & ACTION IS ${tc.objectrepository.action.toUpperCase()}`);
         // before execute step
         // await socket.emit("ui_execution", {
         //   status: "started",
@@ -180,11 +157,7 @@ export default class AndroidExecutor {
           console.log("Send key started");
           await this.sendKeys(element_props, tc.objectrepository.element_value);
           console.log("Sendkey is completed..");
-        } else if (
-          ["up", "left", "select", "right", "down", "back", "home"].includes(
-            tc.objectrepository.action
-          )
-        ) {
+        } else if (["up", "left", "select", "right", "down", "back", "home"].includes(tc.objectrepository.action)) {
           console.log("Remote action started");
           await this.remoteFunctions(tc.objectrepository.action);
           console.log("Remote action compelted");
