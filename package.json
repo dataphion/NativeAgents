@@ -6,7 +6,7 @@
   "scripts": {
     "postinstall": "electron-builder install-app-deps",
     "build": "gulp build",
-    "start": "gulp start",
+    "start": "gulp build & gulp start",
     "test": "gulp test",
     "release": "gulp release",
     "package-mac": "electron-packager . --overwrite --platform=darwin --arch=x64 --icon=assets/mac.icns --prune=true --out=release-builds",

@@ -97,12 +97,10 @@ const launchApp = async () => {
 };
 
 const startSession = async (data) => {
-  if (data.os == "Android") {
-    opts["capabilities"] = data.capabilities;
-    DRIVER = await wdio.remote(opts);
-    setExecutor(opts["capabilities"]);
-    await refresh();
-  }
+  opts["capabilities"] = data.capabilities;
+  DRIVER = await wdio.remote(opts);
+  setExecutor(opts["capabilities"]);
+  await refresh();
   return "done";
 };
 
