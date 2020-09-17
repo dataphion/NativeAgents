@@ -1,4 +1,4 @@
-import { app, Notification } from "electron";
+import { app, Notification, Menu } from "electron";
 import io from "socket.io-client";
 import axios from "axios";
 import constants from "./constant";
@@ -30,7 +30,25 @@ let opts = {
   },
 };
 
+const mainMenuTemplate = [
+  {
+    label: "File",
+    submenu: [
+      {
+        label: "Quite",
+        accelerator: process.platform == "darwin" ? "Command+Q" : "Ctrl+Q",
+        click() {
+          app.quit();
+        },
+      },
+    ],
+  },
+];
+
 const createWindow = async () => {
+  const mainMenu = Menu.buildFromTemplate(mainMenuTemplate);
+  Menu.setApplicationMenu(mainMenu);
+
   // For get system IP and OS
   try {
     const getIP = await axios.get("https://api.ipify.org/?format=json");

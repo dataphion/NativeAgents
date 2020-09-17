@@ -8,7 +8,10 @@
     "build": "gulp build",
     "start": "gulp start",
     "test": "gulp test",
-    "release": "gulp release"
+    "release": "gulp release",
+    "package-mac": "electron-packager . --overwrite --platform=darwin --arch=x64 --icon=assets/mac.icns --prune=true --out=release-builds",
+    "package-win": "electron-packager . electron-tutorial-app --overwrite --asar=true --platform=win32 --arch=ia32 --icon=assets/win.ico --prune=true --out=release-builds --version-string.CompanyName=CE --version-string.FileDescription=CE --version-string.ProductName=\"Electron Tutorial App\"",
+    "package-linux": "electron-packager . electron-tutorial-app --overwrite --asar=true --platform=linux --arch=x64 --icon=assets/linux.png --prune=true --out=release-builds"
   },
   "author": "Dataphion",
   "devDependencies": {
@@ -20,6 +23,7 @@
     "electron": "^5.0.13",
     "electron-builder": "^20.39.0",
     "electron-connect": "^0.6.3",
+    "electron-packager": "^15.1.0",
     "electron-react-devtools": "^0.5.3",
     "gulp": "^4.0.2",
     "gulp-babel": "^8.0.0",
@@ -43,6 +47,7 @@
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-stage-2": "^6.24.1",
     "babel-register": "^6.26.0",
+    "bufferutil": "^4.0.1",
     "chromedriver": "^75.1.0",
     "electron-is-dev": "^1.1.0",
     "electron-promise-ipc": "^2.0.1",
@@ -62,6 +67,7 @@
     "selenium-webdriver": "^4.0.0-alpha.4",
     "socket.io-client": "^2.3.0",
     "sortablejs": "^1.10.2",
+    "utf-8-validate": "^5.0.2",
     "xmldom": "^0.3.0",
     "xpath": "^0.0.27",
     "zeromq": "^5.2.0"
