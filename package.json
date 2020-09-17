@@ -20,7 +20,7 @@
     "@babel/preset-env": "^7.4.4",
     "@babel/preset-react": "^7.0.0",
     "babel-jest": "^24.8.0",
-    "electron": "^5.0.13",
+    "electron": "^9.2.0",
     "electron-builder": "^20.39.0",
     "electron-connect": "^0.6.3",
     "electron-packager": "^15.1.0",
