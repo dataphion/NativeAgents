@@ -89,7 +89,7 @@ const launchApp = async () => {
   });
 
   // For refresh
-  socket.on(`REFRESH_${deviceIp}`, (data) => refresh());
+  socket.on(`REFRESH_${deviceIp}`, (data) => refresh(data.capabilities));
   socket.on(`TAP_${deviceIp}`, (data) => tap(data));
   socket.on(`FOCUS_${deviceIp}`, (data) => focus(data));
   socket.on(`SENDKEYS_${deviceIp}`, (data) => sendkeys(data));
@@ -100,12 +100,12 @@ const startSession = async (data) => {
   opts["capabilities"] = data.capabilities;
   DRIVER = await wdio.remote(opts);
   setExecutor(opts["capabilities"]);
-  await refresh();
+  await refresh(opts["capabilities"]);
   return "done";
 };
 
 function setExecutor(caps, event = null) {
-  if (caps.platformName == "tvOS") {
+  if (["tvOS", "IOS"].includes(caps.platformName)) {
     console.log("Setting platform as TVOS and initializing the executor..");
     EXECUTOR = new TVOSExecutor(DRIVER);
   } else if (caps.platformName == "Android") {
@@ -115,7 +115,7 @@ function setExecutor(caps, event = null) {
   }
 }
 
-const refresh = async () => {
+const refresh = async (caps) => {
   let source, screenshot, window_size;
   try {
     source = await DRIVER.getPageSource();
@@ -128,7 +128,7 @@ const refresh = async () => {
 
   screenshot = await DRIVER.takeScreenshot();
   window_size = await DRIVER.getWindowSize();
-  let activity = await DRIVER.getCurrentActivity();
+  let activity = !["tvOS", "IOS"].includes(caps.platformName) ? await DRIVER.getCurrentActivity() : "";
   console.log("Activity is --> " + activity);
   console.log("replying back to the server");
   await socket.emit("send_created_session_data", {
